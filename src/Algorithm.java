@@ -1,23 +1,23 @@
 public class Algorithm {
 
-    //Array de letras permitidas
+    // Array de letras permitidas
     static char[] letters = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 
-    //Array de letras especiales no permitidas
+    // Array de letras especiales no permitidas
     static char[] specialLetters = {'{','}','[',']','<','>','|','!','@','"','#','·','~','$','%','¬','&','/','(',')','=','?','\'','¿','¡','\\','º','ª','^','*','+','_','ç','Ç','-','.',';',',',':','€'};
 
 
-    //Obtener el indice de una letra en el array 'letters'
+    // Obtener el indice de una letra en el array 'letters'
     public static int index(char c) {
         for (int i = 0; i < letters.length; i++) {
             if (letters[i] == c) {
                 return i;
             }
         }
-        return -1; //Devuelve -1 si no se encuentra en el array
+        return -1; // Devuelve -1 si no se encuentra en el array
     }
 
-    //Cifrar una cadena usando un desplazamiento k
+    // Cifrar una cadena usando un desplazamiento k
     public static String encryption(String s, int k) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
@@ -38,7 +38,7 @@ public class Algorithm {
         return result.toString();
     }
 
-    //Transposición de colummnas
+    // Transposición de colummnas
     // Dado un número de columnas, organiza el texto en una matriz y luego lo lee fila por fila
     public static String transpositionColumns(String s, int columns) {
         int rows = (s.length() + columns - 1) / columns; //Calcula las filas
@@ -51,7 +51,7 @@ public class Algorithm {
                 if (index < s.length()) {
                     matrix[row][col] = s.charAt(index++);
                 } else {
-                    matrix[row][col] = ' '; //Rellena espacios vacios
+                    matrix[row][col] = ' '; // Rellena espacios vacios
                 }
             }
         }
@@ -72,7 +72,7 @@ public class Algorithm {
         StringBuilder even = new StringBuilder();
 
         // Dependiendo de la posición de la letra en la palabra, la cuenta como par o impar (empieza en 0)
-        //Par usara key 1 y impar key 2
+        // Par usara key 1 y impar key 2
         for (int i = 0; i < text.length(); i++) {
             if (i % 2 == 0) {
                 even.append(text.charAt(i));
@@ -81,7 +81,7 @@ public class Algorithm {
             }
         }
 
-        //Texto cifrado pero separado por las posiciones pares e impares con claves diferentes
+        // Texto cifrado pero separado por las posiciones pares e impares con claves diferentes
         String encryptionEven = encryption(even.toString(), k1);
         String encryptionOdd = encryption(odd.toString(), k2);
         String encryptedText = "";
@@ -100,10 +100,10 @@ public class Algorithm {
         return transpositionColumns(encryptedText, columns);
     }
 
-    //Descifrar el texto
+    // Descifrar el texto
     public static String decryption(String s, int columns, int k1, int k2) {
 
-        //Primero realiza la transposición inversa
+        // Primero realiza la transposición inversa
         int rows = (s.length() + columns - 1) / columns;
         char[][] matrix = new char[rows][columns];
 
@@ -163,7 +163,7 @@ public class Algorithm {
         return "Algorithm{ }";
     }
 
-    //Determina si el caracter es especial o no
+    // Determina si el caracter es especial o no
     public static boolean isSpecialCharacter(char c) {
         for (char specialChar : specialLetters) {
             if (c == specialChar) {
